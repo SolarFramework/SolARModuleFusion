@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<xpcf-registry>
+     <module uuid="2afa5c9c-85e0-11e8-adc0-fa7ae01bbebc" name="SolARModuleFusion"    path="$BCOMDEVROOT/bcomBuild/SolARModuleFusion/0.4.0/lib/x86_64/shared">
+        <component uuid="f63d078e-85df-11e8-adc0-fa7ae01bbebc" description="SolARVisualInertialEKF">
+                <interface uuid="125f2007-1bf9-421d-9367-fbdc1210d006" description="IComponentIntrospect"/>
+                <interface uuid="3efaa1c6-85e4-11e8-adc0-fa7ae01bbebc" description="IVisualInertialFusion"/>
+        </component>
+    </module>
+</xpcf-registry>
