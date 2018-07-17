@@ -119,7 +119,7 @@ namespace FUSION {
                 control.w_z() = inertialData.gyroData[2];
 
                 //process imu
-                m_sys.dt = std::chrono::duration_cast<std::chrono::seconds>(inertialData.timestamp - m_lastKalman).count();
+                m_sys.dt = (inertialData.timestamp - m_lastKalman).count() * 0.000000001;
                 x_ekf = m_ekf.predict(m_sys, control);
                 m_lastKalman = inertialData.timestamp;
             }
