@@ -24,6 +24,7 @@
 
 #include "datastructure/Image.h"
 #include "datastructure/MathDefinitions.h"
+#include "SharedFifo.hpp"
 
 #include "kalman/ExtendedKalmanFilter.hpp"
 
