@@ -192,7 +192,7 @@ namespace FUSION {
 
             kalmanToOpenCVBase(position, orientation);
 
-            pose = constructPose(Transform3Df(orientation.toRotationMatrix().cast<float>()), position.cast<float>()); // cast to float to prevent Eigen's "MIXED TYPES WHEN USING DOUBLE"
+            constructPose(Transform3Df(orientation.toRotationMatrix().cast<float>()), position.cast<float>(), pose); // cast to float to prevent Eigen's "MIXED TYPES WHEN USING DOUBLE"
             pose = pose.inverse();
 
             return FrameworkReturnCode::_SUCCESS;
@@ -220,21 +220,17 @@ namespace FUSION {
         orientation.y() = -orientation.y();
     }
 
-    Transform3Df SolARVisualInertialEKF::constructPose(const  Transform3Df &r, const  Vector3f & t)
+    void SolARVisualInertialEKF::constructPose(const  Transform3Df &r, const  Vector3f & t, Transform3Df & pose)
     {
+        pose(0,0) =  r(0,0);  pose(0,1) = r(0,1);   pose(0,2) = r(0,2);
+        pose(1,0) =  r(1,0);  pose(1,1) = r(1,1);   pose(1,2) = r(1,2);
+        pose(2,0) =  r(2,0);  pose(2,1) = r(2,1);   pose(2,2) = r(2,2);
 
-        Transform3Df m_poseTransform;
-        m_poseTransform(0,0) =  r(0,0);  m_poseTransform(0,1) = r(0,1);   m_poseTransform(0,2) = r(0,2);
-        m_poseTransform(1,0) =  r(1,0);  m_poseTransform(1,1) = r(1,1);   m_poseTransform(1,2) = r(1,2);
-        m_poseTransform(2,0) =  r(2,0);  m_poseTransform(2,1) = r(2,1);   m_poseTransform(2,2) = r(2,2);
+        pose(0,3) =   t[0];
+        pose(1,3) =   t[1];
+        pose(2,3) =   t[2];
 
-        m_poseTransform(0,3) =   t[0];
-        m_poseTransform(1,3) =   t[1];
-        m_poseTransform(2,3) =   t[2];
-
-        m_poseTransform(3,0) = 0; m_poseTransform(3,1) = 0; m_poseTransform(3,2) = 0; m_poseTransform(3,3) = 1;
-
-        return m_poseTransform;
+        pose(3,0) = 0; pose(3,1) = 0; pose(3,2) = 0; pose(3,3) = 1;
     }
 }
 }

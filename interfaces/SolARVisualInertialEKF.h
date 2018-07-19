@@ -76,7 +76,7 @@ public:
 
     void kalmanToOpenCVBase(Vector<T, 3>& position, Quaternion<T>& orientation);
 
-    Transform3Df constructPose(const  Transform3Df &r, const  Vector3f & t);
+    void constructPose(const  Transform3Df &r, const  Vector3f & t, Transform3Df & pose);
 };
 
 }
