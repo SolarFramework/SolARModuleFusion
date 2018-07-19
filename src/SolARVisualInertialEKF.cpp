@@ -39,6 +39,7 @@ namespace FUSION {
         kalmanToOpenCVBase(position, orientation);
 
         State x;
+        x.setZero();
         x.p_x() = position(0);
         x.p_y() = position(1);
         x.p_z() = position(2);
