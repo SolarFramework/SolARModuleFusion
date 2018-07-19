@@ -67,8 +67,12 @@ win32 {
 header_files.path = $${PROJECTDEPLOYDIR}/interfaces
 header_files.files = $$files($${PWD}/interfaces/*.h*)
 
+header_files_rambach.path  = $${PROJECTDEPLOYDIR}/interfaces/kalmanModels/RambachModel/
+header_files_rambach.files = $$files($${PWD}/interfaces/kalmanModels/RambachModel/*.h*)
+
 xpcf_xml_files.path = $${PROJECTDEPLOYDIR}
 xpcf_xml_files.files=$$files($${PWD}/xpcf*.xml)
 
 INSTALLS += header_files
+INSTALLS += header_files_rambach
 INSTALLS += xpcf_xml_files
