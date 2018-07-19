@@ -33,7 +33,9 @@ namespace FUSION {
     {
         Vector<T, 3> position;
         Quaternion<T> orientation;
-        poseToPositionAndOrientation(initialPose.pose.inverse(), position, orientation);
+
+        Transform3Df poseInverse = initialPose.pose.inverse();
+        poseToPositionAndOrientation(poseInverse, position, orientation);
         kalmanToOpenCVBase(position, orientation);
 
         State x;
