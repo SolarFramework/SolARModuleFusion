@@ -1,3 +1,7 @@
+# DEPRECAED - This repo is no longer maintained
+
+----
+
 # SolARModuleFusion
 This module contains a set of components that implements the SolAR fusion interface
 
